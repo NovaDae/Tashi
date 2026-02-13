@@ -151,6 +151,20 @@
             background: linear-gradient(135deg, var(--bg-color) 0%, #f5f1ed 100%);
         }
 
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1920');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.12;
+            z-index: 0;
+        }
+
         .hero-content {
             text-align: center;
             z-index: 2;
@@ -539,6 +553,17 @@
             color: var(--white);
         }
 
+        .contact-info {
+            margin-top: 3rem;
+        }
+
+        .contact-detail {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            margin: 0.8rem 0;
+            letter-spacing: 0.5px;
+        }
+
         /* Footer */
         .footer {
             padding: 3rem 5%;
@@ -676,7 +701,7 @@
 <body>
     <!-- Navigation -->
     <nav class="nav" id="navbar">
-        <a href="#" class="logo">TASHI LAMA</a>
+        <a href="#" class="logo">Tashi Doma Lama</a>
         <ul class="nav-links" id="navLinks">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
@@ -692,6 +717,7 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
+        <div class="hero-background"></div>
         <div class="hero-content">
             <h1 class="hero-title">Interior Design</h1>
             <p class="hero-subtitle">Creating Spaces, Crafting Experiences</p>
@@ -739,9 +765,11 @@
             <h2>Let's Create Together</h2>
             <p>I'm always excited to collaborate on new projects and bring creative visions to life. Whether you have a project in mind or just want to connect, feel free to reach out.</p>
             <div class="contact-links">
-                <a href="mailto:avonead@gmail.com" class="contact-link">EMAIL ME</a>
-                <a href="tel:+9779707504473" class="contact-link">CALL ME</a>
-                <a href="#" class="contact-link">DOWNLOAD CV</a>
+                <a href="resume.pdf" class="contact-link" download>DOWNLOAD CV</a>
+            </div>
+            <div class="contact-info">
+                <p class="contact-detail">Email: avonead@gmail.com</p>
+                <p class="contact-detail">Phone Number: +977 9707504473</p>
             </div>
         </div>
     </section>
@@ -764,7 +792,7 @@
         </div>
     </div>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Sample project data - Replace with your actual project information
         const projects = [
             {
@@ -960,14 +988,4 @@
                 if (target) {
                     target.scrollIntoView({
                         behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Initialize
-        renderProjects();
-    </script>
-</body>
-</html>
+                        block: 'sta
