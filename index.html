@@ -7,14 +7,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
-    <script></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="nav" id="navbar">
-        <a href="#" class="logo">Tashi Doma Lama</a>
+        <a href="#" class="logo">YOUR NAME</a>
         <ul class="nav-links" id="navLinks">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
@@ -30,7 +28,16 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="hero-background"> </div>
+        <div class="hero-background"></div>
+        <div class="hero-pattern"></div>
+        <div class="hero-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+            <div class="decorative-line line-1"></div>
+            <div class="decorative-line line-2"></div>
+        </div>
         <div class="hero-content">
             <h1 class="hero-title">Interior Design</h1>
             <p class="hero-subtitle">Creating Spaces, Crafting Experiences</p>
@@ -68,7 +75,7 @@
             <p class="section-subtitle">A collection of my recent work</p>
         </div>
         <div class="projects-grid" id="projectsGrid">
-            <!-- Project cards will be dynamically inserted here -->
+            <!-- Project cards will be dynamically inserted here by JavaScript -->
         </div>
     </section>
 
@@ -101,6 +108,11 @@
     <div class="modal" id="projectModal">
         <span class="modal-close" id="modalClose">&times;</span>
         <div class="modal-content" id="modalContent">
-            <!-- Modal content will be dynamically inserted here -->
+            <!-- Modal content will be dynamically inserted here by JavaScript -->
         </div>
     </div>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
