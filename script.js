@@ -1,0 +1,260 @@
+// Portfolio Website JavaScript
+// Author: Interior Design Portfolio
+// Description: Handles all interactive features including project display, modal, navigation, and animations
+
+// ===================================
+// PROJECT DATA
+// ===================================
+// Sample project data - Replace with your actual project information
+const projects = [
+    {
+        id: 1,
+        title: "Modern Fusion Restaurant",
+        category: "Restaurant Design",
+        thumbnail: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800",
+        description: "A contemporary restaurant design that blends traditional Nepali elements with modern aesthetics, creating an inviting atmosphere for diners.",
+        location: "Thamel, Kathmandu",
+        area: "2,500 sq ft",
+        year: "2024",
+        client: "Private Client",
+        challenge: "The challenge was to create a warm, welcoming space that honored Nepali culinary traditions while appealing to an international clientele.",
+        solution: "I incorporated natural materials like wood and stone, combined with modern lighting and furniture. Traditional patterns were reimagined in contemporary forms throughout the space.",
+        images: [
+            "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800",
+            "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800",
+            "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=800"
+        ]
+    },
+    {
+        id: 2,
+        title: "Rooftop Café Design",
+        category: "Café Design",
+        thumbnail: "https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=800",
+        description: "An intimate rooftop café design featuring panoramic views of the Kathmandu valley with bohemian-inspired interiors.",
+        location: "Jhamsikhel, Lalitpur",
+        area: "1,800 sq ft",
+        year: "2024",
+        client: "Urban Hospitality Group",
+        challenge: "Maximizing the outdoor space while creating comfortable indoor seating that doesn't obstruct the stunning valley views.",
+        solution: "I designed multi-level seating areas with minimalist railings, incorporated plants for natural screening, and used light, airy fabrics that complement the open-air concept.",
+        images: [
+            "https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=800",
+            "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800",
+            "https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=800"
+        ]
+    },
+    {
+        id: 3,
+        title: "Contemporary Bistro",
+        category: "Restaurant Design",
+        thumbnail: "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=800",
+        description: "A chic urban bistro with an industrial aesthetic, featuring exposed brick, metal accents, and curated lighting.",
+        location: "Durbar Marg, Kathmandu",
+        area: "3,200 sq ft",
+        year: "2023",
+        client: "Gourmet Ventures Pvt. Ltd.",
+        challenge: "Converting a heritage building into a modern dining space while preserving its historical character and complying with preservation guidelines.",
+        solution: "I retained the original brick walls and wooden beams, adding modern elements like Edison bulb lighting, metal furniture, and contemporary art pieces to create a perfect blend of old and new.",
+        images: [
+            "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=800",
+            "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=800",
+            "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800"
+        ]
+    },
+    {
+        id: 4,
+        title: "Minimalist Tea House",
+        category: "Café Design",
+        thumbnail: "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=800",
+        description: "A serene tea house inspired by Japanese minimalism, creating a peaceful retreat in the heart of the city.",
+        location: "Patan, Lalitpur",
+        area: "1,200 sq ft",
+        year: "2023",
+        client: "Zen Tea Company",
+        challenge: "Creating a tranquil, meditative atmosphere in a busy urban setting with limited natural light.",
+        solution: "I used a neutral color palette, incorporated natural materials, and strategically placed mirrors and artificial lighting to create the illusion of space and bring in more light.",
+        images: [
+            "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=800",
+            "https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=800",
+            "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=800"
+        ]
+    }
+];
+
+// ===================================
+// PROJECT RENDERING
+// ===================================
+/**
+ * Renders all project cards in the grid
+ * Creates HTML for each project with thumbnail, category, and title
+ */
+function renderProjects() {
+    const grid = document.getElementById('projectsGrid');
+    grid.innerHTML = projects.map(project => `
+        <div class="project-card" onclick="openModal(${project.id})">
+            <img src="${project.thumbnail}" alt="${project.title}" class="project-image">
+            <div class="project-overlay">
+                <div class="project-category">${project.category}</div>
+                <h3 class="project-title">${project.title}</h3>
+            </div>
+        </div>
+    `).join('');
+}
+
+// ===================================
+// MODAL FUNCTIONALITY
+// ===================================
+/**
+ * Opens the project modal with full details
+ * @param {number} projectId - The ID of the project to display
+ */
+function openModal(projectId) {
+    const project = projects.find(p => p.id === projectId);
+    const modal = document.getElementById('projectModal');
+    const modalContent = document.getElementById('modalContent');
+
+    // Build modal HTML with project details
+    modalContent.innerHTML = `
+        <div class="modal-header">
+            <h2 class="modal-title">${project.title}</h2>
+            <p class="modal-subtitle">${project.category}</p>
+        </div>
+
+        <div class="modal-section">
+            <h3>Project Overview</h3>
+            <p>${project.description}</p>
+        </div>
+
+        <div class="project-details">
+            <div class="detail-item">
+                <div class="detail-label">LOCATION</div>
+                <div class="detail-value">${project.location}</div>
+            </div>
+            <div class="detail-item">
+                <div class="detail-label">AREA</div>
+                <div class="detail-value">${project.area}</div>
+            </div>
+            <div class="detail-item">
+                <div class="detail-label">YEAR</div>
+                <div class="detail-value">${project.year}</div>
+            </div>
+        </div>
+
+        <div class="modal-section">
+            <h3>The Challenge</h3>
+            <p>${project.challenge}</p>
+        </div>
+
+        <div class="modal-section">
+            <h3>The Solution</h3>
+            <p>${project.solution}</p>
+        </div>
+
+        <div class="modal-section">
+            <h3>Project Gallery</h3>
+            <div class="modal-images">
+                ${project.images.map(img => `
+                    <img src="${img}" alt="${project.title}" class="modal-image">
+                `).join('')}
+            </div>
+        </div>
+    `;
+
+    // Show modal and prevent body scroll
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+/**
+ * Closes the modal when clicking the close button
+ */
+document.getElementById('modalClose').addEventListener('click', function() {
+    document.getElementById('projectModal').classList.remove('active');
+    document.body.style.overflow = 'auto';
+});
+
+/**
+ * Closes the modal when clicking outside the content area
+ */
+document.getElementById('projectModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        this.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+});
+
+// ===================================
+// MOBILE NAVIGATION
+// ===================================
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
+
+/**
+ * Toggles mobile menu open/closed
+ */
+menuToggle.addEventListener('click', function() {
+    this.classList.toggle('active');
+    navLinks.classList.toggle('active');
+});
+
+/**
+ * Closes mobile menu when clicking a navigation link
+ */
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', function() {
+        menuToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+    });
+});
+
+// ===================================
+// NAVBAR SCROLL EFFECT
+// ===================================
+/**
+ * Adds/removes scroll class to navbar for styling changes
+ */
+window.addEventListener('scroll', function() {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+});
+
+// ===================================
+// SMOOTH SCROLLING
+// ===================================
+/**
+ * Enables smooth scrolling for anchor links
+ */
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
+// ===================================
+// INITIALIZATION
+// ===================================
+/**
+ * Initialize the portfolio when page loads
+ */
+document.addEventListener('DOMContentLoaded', function() {
+    renderProjects();
+    console.log('Portfolio initialized successfully!');
+});
+
+// Alternative: Call renderProjects immediately if DOM is already loaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderProjects);
+} else {
+    renderProjects();
+}
