@@ -1,6 +1,9 @@
-// Portfolio Website JavaScript
+// ===================================
+// INTERIOR DESIGN PORTFOLIO - JAVASCRIPT
+// ===================================
 // Author: Interior Design Portfolio
-// Description: Handles all interactive features including project display, modal, navigation, and animations
+// Description: Handles all interactive features including project display, 
+//              modal functionality, navigation, and smooth animations
 
 // ===================================
 // PROJECT DATA
@@ -90,6 +93,12 @@ const projects = [
  */
 function renderProjects() {
     const grid = document.getElementById('projectsGrid');
+    
+    if (!grid) {
+        console.error('Project grid element not found!');
+        return;
+    }
+    
     grid.innerHTML = projects.map(project => `
         <div class="project-card" onclick="openModal(${project.id})">
             <img src="${project.thumbnail}" alt="${project.title}" class="project-image">
@@ -110,6 +119,12 @@ function renderProjects() {
  */
 function openModal(projectId) {
     const project = projects.find(p => p.id === projectId);
+    
+    if (!project) {
+        console.error('Project not found with ID:', projectId);
+        return;
+    }
+    
     const modal = document.getElementById('projectModal');
     const modalContent = document.getElementById('modalContent');
 
@@ -166,45 +181,65 @@ function openModal(projectId) {
 }
 
 /**
- * Closes the modal when clicking the close button
+ * Closes the modal and restores body scroll
  */
-document.getElementById('modalClose').addEventListener('click', function() {
-    document.getElementById('projectModal').classList.remove('active');
+function closeModal() {
+    const modal = document.getElementById('projectModal');
+    modal.classList.remove('active');
     document.body.style.overflow = 'auto';
+}
+
+// ===================================
+// MODAL EVENT LISTENERS
+// ===================================
+/**
+ * Close modal when clicking the close button
+ */
+document.addEventListener('DOMContentLoaded', function() {
+    const modalClose = document.getElementById('modalClose');
+    if (modalClose) {
+        modalClose.addEventListener('click', closeModal);
+    }
 });
 
 /**
- * Closes the modal when clicking outside the content area
+ * Close modal when clicking outside the content area
  */
-document.getElementById('projectModal').addEventListener('click', function(e) {
-    if (e.target === this) {
-        this.classList.remove('active');
-        document.body.style.overflow = 'auto';
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('projectModal');
+    if (modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
     }
 });
 
 // ===================================
 // MOBILE NAVIGATION
 // ===================================
-const menuToggle = document.getElementById('menuToggle');
-const navLinks = document.getElementById('navLinks');
-
 /**
  * Toggles mobile menu open/closed
  */
-menuToggle.addEventListener('click', function() {
-    this.classList.toggle('active');
-    navLinks.classList.toggle('active');
-});
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
 
-/**
- * Closes mobile menu when clicking a navigation link
- */
-document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', function() {
-        menuToggle.classList.remove('active');
-        navLinks.classList.remove('active');
-    });
+    if (menuToggle && navLinks) {
+        menuToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a navigation link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    }
 });
 
 // ===================================
@@ -215,10 +250,12 @@ document.querySelectorAll('.nav-links a').forEach(link => {
  */
 window.addEventListener('scroll', function() {
     const navbar = document.getElementById('navbar');
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
+    if (navbar) {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
     }
 });
 
@@ -228,17 +265,34 @@ window.addEventListener('scroll', function() {
 /**
  * Enables smooth scrolling for anchor links
  */
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
     });
+});
+
+// ===================================
+// ESCAPE KEY TO CLOSE MODAL
+// ===================================
+/**
+ * Close modal when ESC key is pressed
+ */
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        const modal = document.getElementById('projectModal');
+        if (modal && modal.classList.contains('active')) {
+            closeModal();
+        }
+    }
 });
 
 // ===================================
@@ -248,13 +302,58 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
  * Initialize the portfolio when page loads
  */
 document.addEventListener('DOMContentLoaded', function() {
+    // Render projects
     renderProjects();
-    console.log('Portfolio initialized successfully!');
+    
+    // Log success message
+    console.log('✅ Portfolio initialized successfully!');
+    console.log(`📁 Loaded ${projects.length} projects`);
 });
 
-// Alternative: Call renderProjects immediately if DOM is already loaded
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', renderProjects);
-} else {
+// ===================================
+// UTILITY FUNCTIONS
+// ===================================
+/**
+ * Add a new project dynamically
+ * @param {Object} project - Project object with all required fields
+ */
+function addProject(project) {
+    projects.push(project);
     renderProjects();
+    console.log('Project added:', project.title);
+}
+
+/**
+ * Remove a project by ID
+ * @param {number} projectId - ID of the project to remove
+ */
+function removeProject(projectId) {
+    const index = projects.findIndex(p => p.id === projectId);
+    if (index !== -1) {
+        const removed = projects.splice(index, 1);
+        renderProjects();
+        console.log('Project removed:', removed[0].title);
+    }
+}
+
+/**
+ * Get project by ID
+ * @param {number} projectId - ID of the project
+ * @returns {Object|null} - Project object or null if not found
+ */
+function getProject(projectId) {
+    return projects.find(p => p.id === projectId) || null;
+}
+
+// Export functions for external use (optional)
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = {
+        projects,
+        renderProjects,
+        openModal,
+        closeModal,
+        addProject,
+        removeProject,
+        getProject
+    };
 }
