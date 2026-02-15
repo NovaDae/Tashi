@@ -12,20 +12,20 @@
 const projects = [
     {
         id: 1,
-        title: "Modern Fusion Restaurant",
+        title: "Newa Chopsticks",
         category: "Restaurant Design",
-        thumbnail: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800",
-        description: "A contemporary restaurant design that blends traditional Nepali elements with modern aesthetics, creating an inviting atmosphere for diners.",
-        location: "Thamel, Kathmandu",
-        area: "2,500 sq ft",
-        year: "2024",
+        thumbnail: "image1.jpeg",
+        description: "The design concept is rooted in typical Newari architecture and cultural aesthetics, reflecting the rich heritage of the surrounding context. Spatial planning, material selection, and interior elements have been thoughtfully developed to embody traditional Newari character while accommodating the functional requirements of a contemporary dining environment.",
+        location: "Basantapur, Kathmandu",
+        area: "1,815.41 sq.ft",
+        year: "2025",
         client: "Private Client",
-        challenge: "The challenge was to create a warm, welcoming space that honored Nepali culinary traditions while appealing to an international clientele.",
-        solution: "I incorporated natural materials like wood and stone, combined with modern lighting and furniture. Traditional patterns were reimagined in contemporary forms throughout the space.",
+        challenge: "The main challenges of the project included addressing technical constraints caused by existing structural pillars and ensuring efficient space planning despite these limitations. Another key difficulty was maintaining a cohesive Newari design concept across all two-and-a-half floors of the restaurant.",
+        solution: "To address the challenges, the structural pillars were thoughtfully integrated as design elements by incorporating Newari decorative detailing, transforming constraints into aesthetic features. Extensive design development was carried out over several months to ensure a cohesive Newari concept was consistently reflected across all floors.",
         images: [
-            "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800",
-            "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800",
-            "https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=800"
+            "image1.jpeg",
+            "image2.jpeg",
+            "image3.jpeg"
         ]
     },
     {
@@ -357,3 +357,4 @@ if (typeof module !== 'undefined' && module.exports) {
         getProject
     };
 }
+
