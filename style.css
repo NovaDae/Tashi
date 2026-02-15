@@ -435,7 +435,7 @@ body {
     top: -20px;
     left: -20px;
     width: 200px;
-    height: 200px;
+    height: 300px;
     border: 1px solid var(--accent-color);
     z-index: -1;
 }
@@ -874,4 +874,5 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
 
