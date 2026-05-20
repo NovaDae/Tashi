@@ -33,7 +33,8 @@ const projects = [
         title: "CEO Office",
         category: "Office Design",
         thumbnail: "ceo1.jpg",
-        description: "An intimate rooftop café design featuring panoramic views of the Kathmandu valley with bohemian-inspired interiors.",
+        description: "The CEO office is designed as a balance of simplicity, sophistication, and bold expression. The space follows a clean and minimal layout, allowing each element to stand out with intention.
+            ",
         location: "Jhamsikhel, Lalitpur",
         area: "1,800 sq ft",
         year: "2024",
