@@ -30,9 +30,9 @@ const projects = [
     },
     {
         id: 2,
-        title: "Rooftop Café Design",
-        category: "Café Design",
-        thumbnail: "https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=800",
+        title: "CEO Office",
+        category: "Office Design",
+        thumbnail: "ceo1.jpg",
         description: "An intimate rooftop café design featuring panoramic views of the Kathmandu valley with bohemian-inspired interiors.",
         location: "Jhamsikhel, Lalitpur",
         area: "1,800 sq ft",
@@ -41,16 +41,16 @@ const projects = [
         challenge: "Maximizing the outdoor space while creating comfortable indoor seating that doesn't obstruct the stunning valley views.",
         solution: "I designed multi-level seating areas with minimalist railings, incorporated plants for natural screening, and used light, airy fabrics that complement the open-air concept.",
         images: [
-            "https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=800",
-            "https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800",
-            "https://images.unsplash.com/photo-1561758033-d89a9ad46330?w=800"
+            "ceo1.jpg",
+            "ceo2.jpg",
+            "ceo3.jpg"
         ]
     },
     {
         id: 3,
-        title: "Contemporary Bistro",
-        category: "Restaurant Design",
-        thumbnail: "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=800",
+        title: "Hotel Bedroom",
+        category: "Bedroom Design",
+        thumbnail: "hotel1.jpg",
         description: "A chic urban bistro with an industrial aesthetic, featuring exposed brick, metal accents, and curated lighting.",
         location: "Durbar Marg, Kathmandu",
         area: "3,200 sq ft",
@@ -59,16 +59,16 @@ const projects = [
         challenge: "Converting a heritage building into a modern dining space while preserving its historical character and complying with preservation guidelines.",
         solution: "I retained the original brick walls and wooden beams, adding modern elements like Edison bulb lighting, metal furniture, and contemporary art pieces to create a perfect blend of old and new.",
         images: [
-            "https://images.unsplash.com/photo-1552566626-52f8b828add9?w=800",
-            "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=800",
-            "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800"
+            "hotel1.jpg",
+            "hotel2.jpg",
+            "hotel3.jpg"
         ]
     },
     {
         id: 4,
-        title: "Minimalist Tea House",
-        category: "Café Design",
-        thumbnail: "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=800",
+        title: "1 BHK",
+        category: "1 BHK Design",
+        thumbnail: "bedroom1.png",
         description: "A serene tea house inspired by Japanese minimalism, creating a peaceful retreat in the heart of the city.",
         location: "Patan, Lalitpur",
         area: "1,200 sq ft",
@@ -77,9 +77,9 @@ const projects = [
         challenge: "Creating a tranquil, meditative atmosphere in a busy urban setting with limited natural light.",
         solution: "I used a neutral color palette, incorporated natural materials, and strategically placed mirrors and artificial lighting to create the illusion of space and bring in more light.",
         images: [
-            "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?w=800",
-            "https://images.unsplash.com/photo-1572116469696-31de0f17cc34?w=800",
-            "https://images.unsplash.com/photo-1600891964092-4316c288032e?w=800"
+            "bedroom1.png",
+            "bedroom2.png",
+            "bedroom3.png"
         ]
     }
 ];
