@@ -358,3 +358,126 @@ if (typeof module !== 'undefined' && module.exports) {
     };
 }
 
+// ===================================
+// LIGHTBOX FUNCTIONALITY
+// ===================================
+let currentImages = [];
+let currentImageIndex = 0;
+
+/**
+ * Opens the lightbox with the clicked image
+ * @param {string} imageSrc - Source of the image to display
+ * @param {Array} allImages - Array of all images in the gallery
+ */
+function openLightbox(imageSrc, allImages) {
+    currentImages = allImages;
+    currentImageIndex = allImages.indexOf(imageSrc);
+    
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const counter = document.getElementById('lightboxCounter');
+    
+    lightboxImage.src = imageSrc;
+    counter.textContent = `${currentImageIndex + 1} / ${currentImages.length}`;
+    
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+/**
+ * Closes the lightbox
+ */
+function closeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    lightbox.classList.remove('active');
+    document.body.style.overflow = 'auto';
+}
+
+/**
+ * Shows the previous image in the lightbox
+ */
+function previousImage() {
+    if (currentImageIndex > 0) {
+        currentImageIndex--;
+    } else {
+        currentImageIndex = currentImages.length - 1; // Loop to last image
+    }
+    updateLightboxImage();
+}
+
+/**
+ * Shows the next image in the lightbox
+ */
+function nextImage() {
+    if (currentImageIndex < currentImages.length - 1) {
+        currentImageIndex++;
+    } else {
+        currentImageIndex = 0; // Loop to first image
+    }
+    updateLightboxImage();
+}
+
+/**
+ * Updates the lightbox image and counter
+ */
+function updateLightboxImage() {
+    const lightboxImage = document.getElementById('lightboxImage');
+    const counter = document.getElementById('lightboxCounter');
+    
+    lightboxImage.src = currentImages[currentImageIndex];
+    counter.textContent = `${currentImageIndex + 1} / ${currentImages.length}`;
+}
+
+// ===================================
+// LIGHTBOX EVENT LISTENERS
+// ===================================
+document.addEventListener('DOMContentLoaded', function() {
+    // Close lightbox button
+    const lightboxClose = document.getElementById('lightboxClose');
+    if (lightboxClose) {
+        lightboxClose.addEventListener('click', closeLightbox);
+    }
+
+    // Close when clicking outside the image
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox) {
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+    }
+
+    // Previous/Next buttons
+    const lightboxPrev = document.getElementById('lightboxPrev');
+    const lightboxNext = document.getElementById('lightboxNext');
+    
+    if (lightboxPrev) {
+        lightboxPrev.addEventListener('click', function(e) {
+            e.stopPropagation();
+            previousImage();
+        });
+    }
+    
+    if (lightboxNext) {
+        lightboxNext.addEventListener('click', function(e) {
+            e.stopPropagation();
+            nextImage();
+        });
+    }
+
+    // Keyboard navigation (ESC to close, Arrow keys to navigate)
+    document.addEventListener('keydown', function(e) {
+        const lightbox = document.getElementById('lightbox');
+        if (lightbox && lightbox.classList.contains('active')) {
+            if (e.key === 'Escape') {
+                closeLightbox();
+            } else if (e.key === 'ArrowLeft') {
+                previousImage();
+            } else if (e.key === 'ArrowRight') {
+                nextImage();
+            }
+        }
+    });
+});
+
