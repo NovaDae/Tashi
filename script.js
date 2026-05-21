@@ -37,8 +37,8 @@ const projects = [
         area: "204 sq ft",
         year: "2026",
         client: "College Assignment Project",
-        challenge: "Maximizing the outdoor space while creating comfortable indoor seating that doesn't obstruct the stunning valley views.",
-        solution: "I designed multi-level seating areas with minimalist railings, incorporated plants for natural screening, and used light, airy fabrics that complement the open-air concept.",
+        challenge: "Creating a workspace that feels professional, sophisticated, and visually powerful while maintaining comfort and functionality.",
+        solution: "Used a balanced combination of wood textures, bold furniture elements, and clean spatial planning to create a modern executive environment with a strong visual identity.",
         images: [
             "ceo1.jpg",
             "ceo2.jpg",
@@ -55,8 +55,8 @@ const projects = [
         area: "294.66 sq.ft",
         year: "2026",
         client: "College Assignment",
-        challenge: "Converting a heritage building into a modern dining space while preserving its historical character and complying with preservation guidelines.",
-        solution: "I retained the original brick walls and wooden beams, adding modern elements like Edison bulb lighting, metal furniture, and contemporary art pieces to create a perfect blend of old and new.",
+        challenge: "Creating a relaxing and luxurious hotel bedroom atmosphere while maintaining functionality and spatial harmony.",
+        solution: "Used soft neutral tones, curved design elements, layered lighting, and warm materials to develop a calm and comfortable hospitality experience.",
         images: [
             "hotel1.jpg",
             "hotel2.jpg",
@@ -73,8 +73,8 @@ const projects = [
         area: "977.5 sq.ft",
         year: "2026",
         client: "Idea Nepal Project",
-        challenge: "Creating a tranquil, meditative atmosphere in a busy urban setting with limited natural light.",
-        solution: "I used a neutral color palette, incorporated natural materials, and strategically placed mirrors and artificial lighting to create the illusion of space and bring in more light.",
+        challenge: "Designing a compact 1BHK space that feels spacious, functional, and aesthetically pleasing without overcrowding the interior.",
+        solution: "Applied efficient space planning, multifunctional furniture concepts, and a light material palette to maximize comfort, storage, and visual openness.",
         images: [
             "bedroom1.png",
             "bedroom2.png",
